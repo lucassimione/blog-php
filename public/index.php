@@ -1,8 +1,7 @@
 <?php
-include './../app/Libraries/Routes.php'; 
-include './../app/Libraries/Controller.php'; 
+include './../app/autoload.php';
 include './../app/configuracao.php';
-include './../app/Libraries/Database.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,8 +16,8 @@ include './../app/Libraries/Database.php';
 <body>
     <?php 
     include APP . '/Views/cabecalho.php';
-    $db = new app\Libraries\Database();
-    $rotas = new app\Libraries\Routes(); 
+    $db = new Database;
+    $rotas = new Routes; 
     include APP . '/Views/rodape.php';
     $db -> query("SELECT * FROM post");
     //$db -> resultado();

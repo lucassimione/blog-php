@@ -1,7 +1,5 @@
 <?php
 
-namespace app\Libraries;
-
 class Routes
 {
     private $controller = 'Paginas';
