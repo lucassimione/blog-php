@@ -1,7 +1,6 @@
 <?php
 include './../app/autoload.php';
 include './../app/configuracao.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,21 +13,10 @@ include './../app/configuracao.php';
     <link href="<?=URL . '/public/css/estilos.css';?>" rel="stylesheet">
 </head>
 <body>
-    <?php 
-    include APP . '/Views/cabecalho.php';
-    $db = new Database;
-    $rotas = new Routes; 
-    include APP . '/Views/rodape.php';
-    $db -> query("SELECT * FROM post");
-    //$db -> resultado();
-    //echo $db -> resultado() -> titulo;
-
-    foreach($db->resultados() as $post)
-    {
-        echo $post-> titulo . '<br>';
-    }
-
-    echo '<hr> Total resultados' . $db->totalResultados();
+    <?php
+    include APP . '/Views/cabecalho.php'; 
+    $rotas = new Routes;
+    include APP . '/Views/rodape.php'; 
     ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

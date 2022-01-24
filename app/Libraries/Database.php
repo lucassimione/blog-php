@@ -1,5 +1,4 @@
 <?php
-
 use PDO;
 class Database
 {
@@ -32,7 +31,7 @@ class Database
         $this -> stmt = $this -> dbh -> prepare($sql);
     }
 
-    public function bind($parametro, $valor, $tipo = null )
+    public function bind($parametro, $valor, $tipo = null)
     {
         if(is_null($tipo)):
             switch (true):
