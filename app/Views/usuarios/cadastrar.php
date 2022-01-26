@@ -6,7 +6,7 @@
         <div class="card-body">
             <p class="card-text"><small class="text-muted">Preecha o formulário abaixo para fazer seu cadastro</small></p>
 
-            <form name="cadastrar" method="POST" action="<?=URL . '/usuarios/cadastrar';?>" class="mt-4">
+            <form name="cadastrar" method="POST" action="<?=URL . '/Usuarios/cadastrar';?>" class="mt-4">
                 <div class="form-group">
                     <label for="nome">Nome: <sup class="text-danger">*</sup></label>
                     <input type="text" name="nome" id="nome" value="<?=$dados['nome']?>" class="form-control <?= $dados['nome_erro'] ? 'is-invalid' : '' ?>">
@@ -41,7 +41,7 @@
                         <input type="submit" value="Cadastrar" class="btn btn-info btn-block">
                     </div>
                     <div class="col">
-                        <a href="#">Você tem uma conta? Faça login</a>
+                        <a href="<?= URL . '/usuarios/login' ?>">Você tem uma conta? Faça login</a>
                     </div>
                 </div>
 

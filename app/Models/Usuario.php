@@ -31,7 +31,23 @@ class Usuario
             return true;
         else:
             return false;
-        endif;
+        endif; 
+    }
+
+    public function checarLogin($email, $senha)
+    {
+        $this -> db -> query('SELECT email, senha FROM usuario WHERE email = :email');
+        $this -> db -> bind(':email', $email);
         
+        if($this -> db -> resultado()):
+            $resultado = $this -> db -> resultado();
+            if(password_verify($senha, $resultado->senha)):
+                return $resultado;
+            else:
+                return false;
+            endif;
+        else:
+            return false;
+        endif;
     }
 }
