@@ -91,17 +91,15 @@ class Usuarios extends Controller
                 if(Checa::checarEmail($formulario['email'])):
                     $dados['email_erro'] = 'O e-mail informado é invalido';
                 else:
-                    $checarLogin = $this -> usuario -> checarLogin($formulario['email'], $formulario['senha']);
+                    $usuario = $this -> usuario -> checarLogin($formulario['email'], $formulario['senha']);
 
-                    if($checarLogin == true):
-                        echo 'Ok';
+                    if($usuario == true):
+                        $this -> criarSessaoUsuario($usuario);
                     else:
                         $dados['senha_erro'] = 'email ou senha incorretos!';
                     endif;
                 endif;
             endif;
-            
-            var_dump($formulario);
         else:
             $dados = [
                 'email' => '', 
@@ -113,7 +111,23 @@ class Usuarios extends Controller
         $this -> view('usuarios/login', $dados);
     }
 
+    private function criarSessaoUsuario($usuario)
+    {
+        $_SESSION['usuario_id'] = $usuario -> id;
+        $_SESSION['usuario_nome'] = $usuario -> nome;
+        $_SESSION['usuario_email'] = $usuario -> email;
+    }
     
+    public function encerrarSessaoUsuario()
+    {
+        unset($_SESSION['usuario_id']); // limpa esse campo
+        unset($_SESSION['usuario_nome']); // limpa esse campo
+        unset($_SESSION['usuario_email']); // limpa esse campo
+
+        session_destroy();
+
+        header('Location:' . URL);
+    }
 }
 
 
